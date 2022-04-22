@@ -1,12 +1,12 @@
 # MovieApp
 
 # Libraries
-Hilt for dependancy injection
-Retrofit for REST API communication
-Paging3 to load data gradually within your RecyclerView
-Espresso For UI testing
-Mockito Mocking framework for unit testing
-Glide for image loading
+-Hilt for dependancy injection
+-Retrofit for REST API communication
+-Paging3 to load data gradually within your RecyclerView
+-Espresso For UI testing
+-Mockito Mocking framework for unit testing
+-Glide for image loading
 
 
 # Installation

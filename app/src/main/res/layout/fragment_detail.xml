@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="movie"
+            type="com.example.videoapp.data.model.MovieDetail"/>
+    </data>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    tools:context=".presentation.view.DetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/activity_detail_backdrop_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+
+                android:alpha="0.6"
+                android:imageUrl="@{movie.backdropPath}"
+                android:scaleType="centerCrop"
+                android:src="@color/material_dynamic_neutral70" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/activity_detail_toolbar_card"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:theme="@style/CardView.Light"
+                app:cardCornerRadius="6dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/activity_detail_poster_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:imageUrl="@{movie.posterPath}"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/activity_detail_movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/activity_detail_toolbar_card"
+                android:maxLength="400"
+                android:maxLines="2"
+                android:text="@{movie.title}"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                app:layout_constraintBottom_toTopOf="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </LinearLayout>
+
+            <View
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp" />
+
+            <TextView
+                android:id="@+id/activity_detail_overview_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Overview"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
+                tools:layout_editor_absoluteY="50dp" />
+
+
+            <LinearLayout
+                android:id="@+id/activity_detail_overview_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="vertical"
+                android:showDividers="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_overview_text">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp" />
+
+
+                <TextView
+                    android:id="@+id/activity_detail_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:scrollbars="vertical"
+                    android:textAlignment="textStart"
+                    android:text="@{movie.overview}"
+                     />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/listError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+
+            <ProgressBar
+                android:id="@+id/loadingView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

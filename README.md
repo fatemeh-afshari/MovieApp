@@ -1,5 +1,9 @@
 # MovieApp
 
+Android sample app for getting movies from TheMovieDB APIs, for getting popular movies. this solution is focused on building Android app.
+
+The app is built with MVI and clean arcitecture.
+
 # Libraries
 - Hilt for dependancy injection
 - Retrofit for REST API communication
